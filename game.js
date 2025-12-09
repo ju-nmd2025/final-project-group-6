@@ -12,11 +12,6 @@ let platforms = [];
 
 function setup() {
   createCanvas(400, 600);
-  for (let i = 0; i < 120; i++) {
-    fill(255);
-    noStroke();
-    circle(random(width), random(height), random(1, 3));
-  }
   textAlign(CENTER, CENTER);
   textSize(20);
   character = new Character();
@@ -26,7 +21,13 @@ function setup() {
 }
 
 function draw() {
-  background(10, 10, 30);
+  background(20, 15, 50);
+for (let i = 0; i < 5; i++) {
+  fill(255, 255, 255);
+  noStroke();
+  circle(random(width), random(height), random(1, 3));
+}
+
 
   if (gameState === "start") {
     drawStartScreen();
