@@ -1,6 +1,7 @@
 import { checkPlatformCollision } from "./collision.js";
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
+import { scrollScreen } from "./scroll.js";
 
 let gameState = "start";
 let score = 0;
@@ -25,17 +26,22 @@ function draw() {
   } else if (gameState === "game") {
     character.update();
     checkPlatformCollision(character, platforms);
+
+    let scoreObject = { value: score }; // object that scrolls the screen
+    scrollScreen(character, platforms, scoreObject);
+    score = scoreObject.value; // updates the score
+
     character.draw();
+
+    for (let p of platforms) {
+      p.update();
+      p.draw();
+    }
 
     fill(255);
     text("Game in Progress...", width / 2, height / 2);
   } else if (gameState === "gameover") {
     drawGameOver();
-  }
-
-  for (let p of platforms) {
-    p.update();
-    p.draw();
   }
 }
 
