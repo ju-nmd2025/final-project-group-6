@@ -1,10 +1,13 @@
+import { Character } from "./character.js";
 let gameState = "start";
 let score = 0;
+let character;
 
 function setup() {
   createCanvas(400, 600);
   textAlign(CENTER, CENTER);
   textSize(20);
+  character = new Character();
 }
 
 function draw() {
@@ -13,6 +16,9 @@ function draw() {
   if (gameState === "start") {
     drawStartScreen();
   } else if (gameState === "game") {
+    character.update();
+    character.draw();
+
     fill(255);
     text("Game in Progress...", width / 2, height / 2);
   } else if (gameState === "gameover") {
