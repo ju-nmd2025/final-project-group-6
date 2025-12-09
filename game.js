@@ -1,42 +1,51 @@
-import { character } from "./character";
-import platform from "platform";
+let gameState = "start";
+let score = 0;
 
 function setup() {
-    createCanvas(400, 400);
+  createCanvas(400, 600);
+  textAlign(CENTER, CENTER);
+  textSize(20);
 }
-
-// Obstacle / Spike / Death
-function drawObstacle() {
-    push();
-    fill("red");
-    triangle(180, 300, 210, 240, 240, 300);
-    pop();
-}
-
-let x = 100;
-let y = 100;
 
 function draw() {
-    background(100, 100, 100);
+  background(10, 10, 30);
 
-    character.draw();
-	platform.draw();
-
-    platform.x -= 10;
-    if(platform.x + platform.w < 0){
-        platform.x = 500;
-    }
-
-    if(character.y + character.h < 300){
-        character.y += 10;
-    }
-
-    // Floor
-    line(0, 300, 400, 300);
+  if (gameState === "start") {
+    drawStartScreen();
+  } else if (gameState === "game") {
+    fill(255);
+    text("Game in Progress...", width / 2, height / 2);
+  } else if (gameState === "gameover") {
+    drawGameOver();
+  }
 }
 
-function keyPressed(){
-    if(character.y + character.h === 300){
-        character.y -= 80;
+function drawStartScreen() {
+  fill(255);
+  textSize(36);
+  text("Welcome to the Game!", width / 2, height / 2 - 40);
+  textSize(18);
+  text("Press ENTER to Start", width / 2, height / 2 + 20);
+}
+
+function drawGameOver() {
+  fill(255, 150, 150);
+  textSize(36);
+  text("Game Over!", width / 2, height / 2 - 40);
+  textSize(20);
+  text("Press SPACE to play again", width / 2, height / 2 + 20);
+  text(`Score: ${score}`, width / 2, height / 2 + 50);
+}
+
+function keyPressed() {
+  if (key === " ") {
+    if (gameState === "start" || gameState === "gameover") {
+      startGame();
     }
+  }
+}
+
+function startGame() {
+  score = 0;
+  gameState = "game";
 }
