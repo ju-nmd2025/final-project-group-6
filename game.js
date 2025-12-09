@@ -9,6 +9,7 @@ let gameState = "start";
 let score = 0;
 let character;
 let platforms = [];
+let bestScore = 0;
 
 function setup() {
   createCanvas(400, 600);
@@ -22,12 +23,11 @@ function setup() {
 
 function draw() {
   background(20, 15, 50);
-for (let i = 0; i < 5; i++) {
-  fill(255, 255, 255);
-  noStroke();
-  circle(random(width), random(height), random(1, 3));
-}
-
+  for (let i = 0; i < 5; i++) {
+    fill(255, 255, 255);
+    noStroke();
+    circle(random(width), random(height), random(1, 3));
+  }
 
   if (gameState === "start") {
     drawStartScreen();
@@ -66,12 +66,13 @@ function drawStartScreen() {
 }
 
 function drawGameOver() {
-  fill(255, 150, 150);
+  fill(255);
   textSize(36);
   text("Game Over!", width / 2, height / 2 - 40);
   textSize(20);
   text("Press SPACE to play again", width / 2, height / 2 + 20);
   text(`Score: ${score}`, width / 2, height / 2 + 50);
+  text(`Best: ${bestScore}`, width / 2, height / 2 + 80);
 }
 
 function keyPressed() {
