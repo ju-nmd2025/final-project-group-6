@@ -34,9 +34,9 @@ export class Platform {
     rectMode(CENTER);
     noStroke();
 
-    if (this.type === "normal") fill(180);
-    else if (this.type === "moving") fill(120, 180, 255);
-    else if (this.type === "breaking") fill(255, 120, 120);
+    if (this.type === "normal") fill(50, 80, 50);
+    else if (this.type === "moving") fill(111, 15, 17);
+    else if (this.type === "breaking") fill(111, 55, 37);
 
     if (this.broken) fill(140, 80, 80);
 
