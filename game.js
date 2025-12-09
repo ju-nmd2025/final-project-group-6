@@ -2,6 +2,7 @@ import { checkPlatformCollision } from "./collision.js";
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
 import { scrollScreen } from "./scroll.js";
+import { generatePlatforms } from "./platformGen.js";
 
 let gameState = "start";
 let score = 0;
@@ -38,8 +39,7 @@ function draw() {
       p.draw();
     }
 
-    fill(255);
-    text("Game in Progress...", width / 2, height / 2);
+    platforms = generatePlatforms(platforms);
   } else if (gameState === "gameover") {
     drawGameOver();
   }

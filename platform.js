@@ -10,7 +10,7 @@ export class Platform {
     this.toRemove = false;
 
     this.vx = 0;
-    if (type === "movin") this.vx = random([-1.5, 1.5]);
+    if (type === "moving") this.vx = random([-1.5, 1.5]);
   }
 
   update() {
