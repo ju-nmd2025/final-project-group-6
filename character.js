@@ -37,9 +37,45 @@ export class Character {
   draw() {
     push();
     noStroke();
-    // body
-    fill(120, 200, 255);
+    ellipseMode(CENTER);
+
+    // Face
+    fill(255, 224, 189);
     ellipse(this.x, this.y, this.w, this.h);
+
+    // Beard
+    fill(255);
+    ellipse(this.x, this.y + this.h / 4, this.w * 0.8, this.h / 2);
+
+    // Eyes
+    fill(0);
+    ellipse(this.x - this.w / 6, this.y - this.h / 8, this.w / 8, this.h / 8);
+    ellipse(this.x + this.w / 6, this.y - this.h / 8, this.w / 8, this.h / 8);
+
+    // Mouth
+    noFill();
+    stroke(255, 150, 180);
+    strokeWeight(3);
+    arc(this.x, this.y + this.h / 16, this.w / 3, this.h / 6, 0, PI);
+
+    // Santa hat
+    noStroke();
+    fill(255, 0, 0);
+    triangle(
+      this.x - this.w / 2,
+      this.y - this.h / 2,
+      this.x + this.w / 2,
+      this.y - this.h / 2,
+      this.x,
+      this.y - this.h
+    );
+
+    fill(255); // hat bottom
+    rect(this.x - this.w / 2, this.y - this.h / 2 - 2, this.w, 6, 3);
+
+    fill(255); // pompom
+    ellipse(this.x, this.y - this.h, this.w / 6);
+
     pop();
   }
 }
