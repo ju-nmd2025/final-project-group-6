@@ -1,5 +1,7 @@
+import { checkPlatformCollision } from "./collision.js";
 import { Character } from "./character.js";
 import { Platform } from "./platform.js";
+
 let gameState = "start";
 let score = 0;
 let character;
@@ -22,6 +24,7 @@ function draw() {
     drawStartScreen();
   } else if (gameState === "game") {
     character.update();
+    checkPlatformCollision(character, platforms);
     character.draw();
 
     fill(255);
