@@ -1,13 +1,18 @@
 import { Character } from "./character.js";
+import { Platform } from "./platform.js";
 let gameState = "start";
 let score = 0;
 let character;
+let platforms = [];
 
 function setup() {
   createCanvas(400, 600);
   textAlign(CENTER, CENTER);
   textSize(20);
   character = new Character();
+  platforms.push(new Platform(width / 2, height - 50, 120, "normal"));
+  platforms.push(new Platform(150, 400, 80, "moving"));
+  platforms.push(new Platform(250, 300, 80, "breaking"));
 }
 
 function draw() {
@@ -23,6 +28,11 @@ function draw() {
     text("Game in Progress...", width / 2, height / 2);
   } else if (gameState === "gameover") {
     drawGameOver();
+  }
+
+  for (let p of platforms) {
+    p.update();
+    p.draw();
   }
 }
 
