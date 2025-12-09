@@ -3,6 +3,7 @@ import { Character } from "./character.js";
 import { Platform } from "./platform.js";
 import { scrollScreen } from "./scroll.js";
 import { generatePlatforms } from "./platformGen.js";
+import { gameRestart } from "./gameRestart.js";
 
 let gameState = "start";
 let score = 0;
@@ -39,7 +40,12 @@ function draw() {
       p.draw();
     }
 
-    platforms = generatePlatforms(platforms);
+    platforms = generatePlatforms(platforms); // more platforms
+
+    gameRestart(character, setGameState); // check for game restart
+
+    fill(255);
+    text("Score: " + score, width / 2, 30);
   } else if (gameState === "gameover") {
     drawGameOver();
   }
@@ -71,6 +77,17 @@ function keyPressed() {
 }
 
 function startGame() {
-  score = 0;
+  score = 0; // reseting the score
   gameState = "game";
+
+  character.reset(); // reseting the character
+
+  platforms = []; // reseting the platforms
+  platforms.push(new Platform(width / 2, height - 50, 120, "normal"));
+  platforms.push(new Platform(150, 400, 80, "moving"));
+  platforms.push(new Platform(250, 300, 80, "breaking"));
+}
+
+function setGameState(state) {
+  gameState = state;
 }
