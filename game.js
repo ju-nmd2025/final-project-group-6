@@ -12,6 +12,11 @@ let platforms = [];
 
 function setup() {
   createCanvas(400, 600);
+  for (let i = 0; i < 120; i++) {
+    fill(255);
+    noStroke();
+    circle(random(width), random(height), random(1, 3));
+  }
   textAlign(CENTER, CENTER);
   textSize(20);
   character = new Character();
