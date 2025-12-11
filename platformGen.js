@@ -1,6 +1,6 @@
 import { Platform } from "./platform.js";
 
-export function generatePlatforms(platforms, maxPlatforms = 10) {
+export default function generatePlatforms(platforms, maxPlatforms = 10) {
   // Remove platforms
   platforms = platforms.filter((platform) => !platform.toRemove);
 
@@ -18,3 +18,5 @@ export function generatePlatforms(platforms, maxPlatforms = 10) {
   }
   return platforms; // return updated platforms array
 }
+
+export { generatePlatforms };

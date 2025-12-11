@@ -1,4 +1,4 @@
-export function scrollScreen(character, platforms, scoreObject) {
+export default function scrollScreen(character, platforms, scoreObject) {
   // if character goes in the upper part of the screen
   if (character.y < height / 2) {
     let difference = height / 2 - character.y; // how much it moves
@@ -16,3 +16,5 @@ export function scrollScreen(character, platforms, scoreObject) {
     scoreObject.value += Math.floor(difference);
   }
 }
+
+export { scrollScreen };

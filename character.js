@@ -1,4 +1,4 @@
-export class Character {
+export default class Character {
   constructor() {
     this.x = width / 2;
     this.y = height - 120;
@@ -79,3 +79,5 @@ export class Character {
     pop();
   }
 }
+
+export { Character };

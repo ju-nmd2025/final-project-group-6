@@ -1,4 +1,4 @@
-export class Platform {
+export default class Platform {
   constructor(x, y, w = 80, type = "normal") {
     this.x = x;
     this.y = y;
@@ -44,3 +44,5 @@ export class Platform {
     pop();
   }
 }
+
+export { Platform };

@@ -1,4 +1,4 @@
-export function checkPlatformCollision(character, platforms) {
+export default function checkPlatformCollision(character, platforms) {
   for (let p of platforms) {
     if (
       character.velocity > 0 &&
@@ -14,3 +14,5 @@ export function checkPlatformCollision(character, platforms) {
     }
   }
 }
+
+export { checkPlatformCollision };

@@ -1,4 +1,4 @@
-export function gameRestart(character, setGameState) {
+export default function gameRestart(character, setGameState) {
   if (character.y - character.h / 2 > 600) {
     setGameState("gameover");
     if (score > bestScore) bestScore = score;
@@ -6,3 +6,5 @@ export function gameRestart(character, setGameState) {
     character.reset();
   }
 }
+
+export { gameRestart };
