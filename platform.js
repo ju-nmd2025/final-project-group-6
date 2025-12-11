@@ -6,27 +6,27 @@ export default class Platform {
     this.h = 12;
 
     this.type = type;
-    this.broken = false;
-    this.toRemove = false;
+    this.broken = false; // means the platform is cracking and falling
+    this.toRemove = false; // “remove this from the array soon”, because it’s off-screen
 
-    this.vx = 0;
+    this.vx = 0; // horizontal speed for moving platforms
     if (type === "moving") this.vx = random([-1.5, 1.5]);
   }
 
   update() {
     if (this.type === "moving") {
-      this.x += this.vx;
-      if (this.x < 40 || this.x > width - 40) this.vx *= -1;
+      this.x += this.vx; // move horizontally
+      if (this.x < 40 || this.x > width - 40) this.vx *= -1; // if it hits the left or right boundary, it reverses direction
     }
 
     if (this.broken) {
       this.y += 6;
-      if (this.y > height + 60) this.toRemove = true;
+      if (this.y > height + 60) this.toRemove = true; // mark for removal if it goes off-screen
     }
   }
 
   break() {
-    this.broken = true;
+    this.broken = true; // method to initiate breaking
   }
 
   draw() {

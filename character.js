@@ -1,4 +1,5 @@
 export default class Character {
+  // sets up the character
   constructor() {
     this.x = width / 2;
     this.y = height - 120;

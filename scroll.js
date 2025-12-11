@@ -1,12 +1,12 @@
 export default function scrollScreen(character, platforms, scoreObject) {
   // if character goes in the upper part of the screen
   if (character.y < height / 2) {
-    let difference = height / 2 - character.y; // how much it moves
-    character.y = height / 2; // character stays in the middle
+    // If the character’s y position is above the middle -> start scrolling the screen
+    let difference = height / 2 - character.y;
+    character.y = height / 2;
 
-    // moving all the platforms down
     platforms.forEach((p) => {
-      p.y += difference;
+      p.y += difference; // move platforms down
 
       // removing platforms that go off the screen
       if (p.y > height + 60) p.toRemove = true;
