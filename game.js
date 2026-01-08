@@ -48,7 +48,7 @@ function draw() {
 
     platforms = generatePlatforms(platforms); // more platforms
 
-    gameRestart(character, setGameState); // check for game restart
+    gameRestart(character, setGameState, score, bestScore); // check for game restart
 
     fill(255);
     text("Score: " + score, width / 2, 30);
@@ -103,10 +103,6 @@ function setGameState(state) {
 window.setup = setup;
 
 window.draw = draw;
-
-window.addEventListener("click", function (event) {
-  mousePressed();
-});
 
 window.addEventListener("keydown", function (event) {
   keyPressed();

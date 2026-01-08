@@ -1,4 +1,4 @@
-export default function gameRestart(character, setGameState) {
+export default function gameRestart(character, setGameState, score, bestScore) {
   if (character.y - character.h / 2 > 600) {
     // falls below the screen
     setGameState("gameover");
